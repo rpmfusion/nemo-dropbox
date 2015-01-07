@@ -1,15 +1,16 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    2.4.x
-Release:    2%{?dist}
+Version:    2.4.0
+Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 Group:      User Interface/Desktops
 URL:        http://cinnamon.linuxmint.com
 # To generate tarball
-# wget https://github.com/linuxmint/nemo-extensions/tarball/%%{_internal_version} -O nemo-extensions-%%{version}.git%%{_internal_version}.tar.gz
-#Source0:   http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-%%{version}.git%%{_internal_version}.tar.gz
-Source0:    http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-%{version}.tar.gz
+# wget https://github.com/linuxmint/nemo-extensions/tarball/%%{_internal_version} -O nemo-extensions-2.4.x.git%%{_internal_version}.tar.gz
+#Source0:   http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-2.4.x.git%%{_internal_version}.tar.gz
+Source0:    http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-2.4.x.tar.gz
 
+ExclusiveArch:  i686 x86_64
 
 BuildRequires:  nemo-devel
 BuildRequires:  python-docutils
@@ -27,7 +28,7 @@ Dropbox allows you to sync your files online and across
 your computers automatically.
 
 %prep
-%setup -q -n nemo-extensions-%{version}
+%setup -q -n nemo-extensions-2.4.x
 
 %build
 pushd nemo-dropbox
@@ -57,6 +58,10 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 
 
 %changelog
+* Wed Jan 07 2015 Leigh Scott <leigh123linux@googlemail.com> - 2.4.0-1
+- use internal version
+- add ExclusiveArch
+
 * Tue Dec 16 2014 Leigh Scott <leigh123linux@googlemail.com> - 2.4.x-2
 - add requires dropbox
 
