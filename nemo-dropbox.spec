@@ -1,14 +1,11 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    2.6.0
+Version:    3.0.0
 Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 Group:      User Interface/Desktops
 URL:        http://cinnamon.linuxmint.com
-# To generate tarball
-# wget https://github.com/linuxmint/nemo-extensions/tarball/%%{_internal_version} -O nemo-extensions-2.6.x.git%%{_internal_version}.tar.gz
-#Source0:   http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-2.6.x.git%%{_internal_version}.tar.gz
-Source0:    http://leigh123linux.fedorapeople.org/pub/nemo-extensions/source/nemo-extensions-2.6.x.tar.gz
+Source0:    https://github.com/linuxmint/nemo-extensions/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
 
 ExclusiveArch:  i686 x86_64
 
@@ -28,7 +25,7 @@ Dropbox allows you to sync your files online and across
 your computers automatically.
 
 %prep
-%setup -q -n nemo-extensions-2.6.x
+%setup -q -n nemo-extensions-3.0.0
 
 %build
 pushd nemo-dropbox
@@ -42,8 +39,8 @@ pushd nemo-dropbox
 %{make_install}
 popd
 
-find ${RPM_BUILD_ROOT} -type f -name "*.la" -exec rm -f {} ';'
-find ${RPM_BUILD_ROOT} -type f -name "*.a" -exec rm -f {} ';'
+#Remove libtool archives.
+find $RPM_BUILD_ROOT -name '*.la' -or -name '*.a' | xargs rm -f
 
 rm -rf ${RPM_BUILD_ROOT}%{_bindir}
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}
@@ -58,6 +55,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 
 
 %changelog
+* Fri Jun 17 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-1
+- update to 3.0.0
+
 * Sun Jul 05 2015 Leigh Scott <leigh123linux@googlemail.com> - 2.6.0-1
 - update to 2.6.0
 
