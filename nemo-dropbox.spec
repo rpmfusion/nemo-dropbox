@@ -1,7 +1,7 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
 Version:    3.0.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 Group:      User Interface/Desktops
 URL:        http://cinnamon.linuxmint.com
@@ -55,6 +55,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 
 
 %changelog
+* Fri Jul 01 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-2
+- rebuilt
+
 * Fri Jun 17 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-1
 - update to 3.0.0
 
