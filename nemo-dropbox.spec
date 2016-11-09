@@ -60,6 +60,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 * Wed Nov 09 2016 leigh scott <leigh123linux@googlemail.com> - 3.2.0-1
 - update to 3.2.0
 
+* Sun Aug 07 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-2
+- rebuilt
+
 * Fri Jun 17 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-1
 - update to 3.0.0
 
