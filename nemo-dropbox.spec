@@ -1,6 +1,6 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    3.0.0
+Version:    3.2.0
 Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 Group:      User Interface/Desktops
@@ -25,18 +25,19 @@ Dropbox allows you to sync your files online and across
 your computers automatically.
 
 %prep
-%setup -q -n nemo-extensions-3.0.0
+%setup -q -n nemo-extensions-%{version}
 
 %build
 pushd nemo-dropbox
-autoreconf -fi
+mv configure.in configure.ac
+./autogen.sh
 %configure
-make %{?_smp_mflags}
+%make_build V=1
 popd
 
 %install
 pushd nemo-dropbox
-%{make_install}
+%make_install
 popd
 
 #Remove libtool archives.
@@ -50,11 +51,15 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 %postun -p /sbin/ldconfig
 
 %files
-%doc nemo-dropbox/{AUTHORS,ChangeLog,COPYING,NEWS,README}
+%doc nemo-dropbox/{AUTHORS,ChangeLog,NEWS,README}
+%license nemo-dropbox/COPYING
 %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.so
 
 
 %changelog
+* Wed Nov 09 2016 leigh scott <leigh123linux@googlemail.com> - 3.2.0-1
+- update to 3.2.0
+
 * Fri Jun 17 2016 Leigh Scott <leigh123linux@googlemail.com> - 3.0.0-1
 - update to 3.0.0
 
