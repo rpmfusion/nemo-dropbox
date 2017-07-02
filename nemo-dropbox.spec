@@ -1,17 +1,15 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    3.2.0
-Release:    2%{?dist}
+Version:    3.4.0
+Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
-Group:      User Interface/Desktops
-URL:        http://cinnamon.linuxmint.com
-Source0:    https://github.com/linuxmint/nemo-extensions/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
+URL:        https://github.com/linuxmint/nemo-extensions
+Source0:    %url/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
 
 ExclusiveArch:  i686 x86_64
 
 BuildRequires:  nemo-devel
-BuildRequires:  python-docutils
-BuildRequires:  autoconf
+BuildRequires:  python2-docutils
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pygobject2-devel
@@ -29,8 +27,7 @@ your computers automatically.
 
 %build
 pushd nemo-dropbox
-mv configure.in configure.ac
-./autogen.sh
+NOCONFIGURE=1 ./autogen.sh
 %configure
 %make_build V=1
 popd
@@ -57,6 +54,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 
 
 %changelog
+* Sun Jul 02 2017 Leigh Scott <leigh123linux@googlemail.com> - 3.4.0-1
+- update to 3.4.0
+
 * Sun Mar 26 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 3.2.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
