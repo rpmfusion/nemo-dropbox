@@ -1,10 +1,11 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
 Version:    3.8.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
+Patch0:     use_python2.patch
 
 ExclusiveArch:  i686 x86_64
 
@@ -23,7 +24,7 @@ Dropbox allows you to sync your files online and across
 your computers automatically.
 
 %prep
-%setup -q -n nemo-extensions-%{version}
+%autosetup -p1 -n nemo-extensions-%{version}
 
 %build
 pushd nemo-dropbox
@@ -38,10 +39,10 @@ pushd nemo-dropbox
 popd
 
 #Remove libtool archives.
-find $RPM_BUILD_ROOT -name '*.la' -or -name '*.a' | xargs rm -f
+find %{buildroot} -name '*.la' -or -name '*.a' | xargs rm -f
 
-rm -rf ${RPM_BUILD_ROOT}%{_bindir}
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}
+rm -rf %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_datadir}
 
 %ldconfig_scriptlets
 
@@ -52,6 +53,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}
 
 
 %changelog
+* Tue Jul 24 2018 Leigh Scott <leigh123linux@googlemail.com> - 3.8.0-2
+- Fix build for f29 python changes
+
 * Tue May 01 2018 Leigh Scott <leigh123linux@googlemail.com> - 3.8.0-1
 - Update to 3.8.0
 
