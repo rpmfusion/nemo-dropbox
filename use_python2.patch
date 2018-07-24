@@ -1,6 +1,6 @@
 --- a/nemo-dropbox/configure.ac
 +++ b/nemo-dropbox/configure.ac
-@@ -29,16 +29,16 @@
+@@ -29,16 +29,16 @@ fi
  PKG_CHECK_MODULES(NEMO, libnemo-extension >= $NEMO_REQUIRED)
  PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
  
@@ -20,9 +20,9 @@
  try:
   import $2
  except:
-
 --- a/nemo-dropbox/Makefile.am
 +++ b/nemo-dropbox/Makefile.am
+@@ -6,11 +6,11 @@ EXTRA_DIST = dropbox.in serializeimages.
  man_MANS = dropbox.1
  
  dropbox: dropbox.in serializeimages.py
@@ -36,4 +36,3 @@
  	$(RST2MAN) dropbox.txt > dropbox.1
  
  SUBDIRS = data src
-
