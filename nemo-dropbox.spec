@@ -7,6 +7,9 @@ URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
 Patch0:     use_python2.patch
 
+# links to fedora repos seems to be wrong for f30
+ExcludeArch:    ppc64le
+
 BuildRequires:  nemo-devel
 BuildRequires:  python2-docutils
 BuildRequires:  automake
@@ -52,7 +55,7 @@ rm -rf %{buildroot}%{_datadir}
 
 %changelog
 * Sun Apr 07 2019 Wolfgang Ulbrich <chat-to-me@raveit.de> - 4.0.0-3
-- build for all archs
+- build for all archs, except ppc64le for f30
 
 * Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 4.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
