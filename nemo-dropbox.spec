@@ -1,20 +1,18 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    4.2.0
+Version:    4.4.0
 Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
-Source0:    %url/archive/%{version}.tar.gz#/nemo-extensions-%{version}.tar.gz
-Patch0:     use_python2.patch
+Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
+Patch0:     %url/pull/341.patch#/remove_python.patch
 
 ExclusiveArch:  i686 x86_64
 
 BuildRequires:  nemo-devel
-BuildRequires:  python2-docutils
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pygobject2-devel
-BuildRequires:  pygtk2-devel
+
 
 Requires:       dropbox >= 1:2.10.0
 
@@ -53,6 +51,9 @@ rm -rf %{buildroot}%{_datadir}
 
 
 %changelog
+* Sun Nov 17 2019 Leigh Scott <leigh123linux@gmail.com> - 4.4.0-1
+- Update to 4.4.0
+
 * Sat Aug 10 2019 Leigh Scott <leigh123linux@gmail.com> - 4.2.0-1
 - Update to 4.2.0
 
