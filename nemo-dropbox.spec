@@ -1,7 +1,7 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    4.8.0
-Release:    2%{?dist}
+Version:    5.0.0
+Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
@@ -9,7 +9,7 @@ Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
 ExclusiveArch:  i686 x86_64
 
 BuildRequires:  nemo-devel >= %{version}
-BuildRequires:  automake
+BuildRequires:  meson
 BuildRequires:  libtool
 
 
@@ -25,16 +25,14 @@ your computers automatically.
 
 %build
 pushd nemo-dropbox
-NOCONFIGURE=1 ./autogen.sh
-%configure
-%make_build
+%meson
+%meson_build
 popd
 
 %install
-%make_install -C nemo-dropbox
-
-#Remove libtool archives.
-find %{buildroot} -name '*.la' -or -name '*.a' | xargs rm -f
+pushd nemo-dropbox
+%meson_install
+popd
 
 rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_datadir}
@@ -48,6 +46,9 @@ rm -rf %{buildroot}%{_datadir}
 
 
 %changelog
+* Sat Jun 12 2021 Leigh Scott <leigh123linux@gmail.com> - 5.0.0-1
+- Update to 5.0.0
+
 * Thu Feb 04 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 4.8.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
