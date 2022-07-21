@@ -1,19 +1,29 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    5.4.0
+Version:    5.4.1
 Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
+Source1:    dropbox
+Source2:    dropbox.1
+Source3:    dropbox.desktop
+Source4:    dropbox.png
 
 ExclusiveArch:  x86_64
 
 BuildRequires:  nemo-devel >= %{version}
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  libtool
 
 
-Requires:       dropbox >= 1:2.10.0
+Conflicts:      dropbox
+
+Requires:       /usr/bin/python3
+Requires:       libatomic
+Requires:       python3-gobject
+Requires:       python3-gpg
 
 %description
 Dropbox extension for nemo file manager
@@ -34,18 +44,34 @@ pushd nemo-dropbox
 %meson_install
 popd
 
-rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_datadir}
 
-%ldconfig_scriptlets
+mkdir -p %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_datadir}/applications/
+mkdir -p %{buildroot}%{_mandir}/man1/
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/
+install -p -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/
+install -p -m 0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/
+install -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/applications/
+install -p -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/dropbox.desktop
 
 %files
 %doc nemo-dropbox/{AUTHORS,ChangeLog,NEWS,README}
 %license nemo-dropbox/COPYING
+%{_bindir}/dropbox
 %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.so
+%{_datadir}/applications/dropbox.desktop
+%{_datadir}/icons/hicolor/48x48/apps/dropbox.png
+%{_mandir}/man1/dropbox.1.*
 
 
 %changelog
+* Thu Jul 21 2022 Leigh Scott <leigh123linux@gmail.com> - 5.4.1-1
+- Update to 5.4.1
+
 * Mon Jun 13 2022 Leigh Scott <leigh123linux@gmail.com> - 5.4.0-1
 - Update to 5.4.0
 
