@@ -1,7 +1,7 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
 Version:    5.4.1
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
@@ -44,7 +44,7 @@ pushd nemo-dropbox
 %meson_install
 popd
 
-rm -rf %{buildroot}%{_datadir}
+rm -rf %{buildroot}%{_datadir}/nemo-dropbox/
 
 mkdir -p %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_datadir}/applications/
@@ -65,10 +65,14 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dropbox.desktop
 %{_libdir}/nemo/extensions-3.0/libnemo-dropbox.so
 %{_datadir}/applications/dropbox.desktop
 %{_datadir}/icons/hicolor/48x48/apps/dropbox.png
+%{_datadir}/icons/hicolor/symbolic/apps/nemo-dropbox-symbolic.svg
 %{_mandir}/man1/dropbox.1.*
 
 
 %changelog
+* Fri Jul 29 2022 Leigh Scott <leigh123linux@gmail.com> - 5.4.1-2
+- Add missing icon
+
 * Thu Jul 21 2022 Leigh Scott <leigh123linux@gmail.com> - 5.4.1-1
 - Update to 5.4.1
 
