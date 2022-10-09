@@ -1,7 +1,7 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
 Version:    5.4.1
-Release:    3%{?dist}
+Release:    4%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
@@ -16,9 +16,6 @@ BuildRequires:  nemo-devel >= %{version}
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  libtool
-
-
-Conflicts:      dropbox
 
 Requires:       /usr/bin/python3
 Requires:       libatomic
@@ -70,6 +67,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/dropbox.desktop
 
 
 %changelog
+* Sun Oct 09 2022 Leigh Scott <leigh123linux@gmail.com> - 5.4.1-4
+- Remove conflicts dropbox
+
 * Mon Aug 08 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 5.4.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
