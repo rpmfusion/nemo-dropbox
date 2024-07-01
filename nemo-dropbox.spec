@@ -1,7 +1,7 @@
 Summary:    Dropbox extension for nemo
 Name:       nemo-dropbox
-Version:    6.0.1
-Release:    3%{?dist}
+Version:    6.2.0
+Release:    1%{?dist}
 License:    GPLv2+ and LGPLv2+ and MIT
 URL:        https://github.com/linuxmint/nemo-extensions
 Source0:    %url/archive/%{version}/nemo-extensions-%{version}.tar.gz
@@ -43,6 +43,9 @@ rm -rf %{buildroot}%{_bindir}
 %{_datadir}/icons/hicolor/symbolic/apps/nemo-dropbox-symbolic.svg
 
 %changelog
+* Mon Jul 01 2024 Leigh Scott <leigh123linux@gmail.com> - 6.2.0-1
+- Update to 6.2.0
+
 * Thu Apr 11 2024 Leigh Scott <leigh123linux@gmail.com> - 6.0.1-3
 - rebuilt
 
